@@ -37,7 +37,6 @@ class MainViewModel(
         object Loading : State()
         data class Success(val list: List<Repo>) : State()
         data class Error(val error: Throwable) : State()
-
     }
 
 }
