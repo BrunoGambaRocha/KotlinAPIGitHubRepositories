@@ -15,4 +15,5 @@ class RepoRepositoryImpl(private val service: GitHubService) : RepoRepository {
             throw RemoteException(ex.message ?: "Não foi possível fazer a busca no momento!")
         }
     }
+
 }

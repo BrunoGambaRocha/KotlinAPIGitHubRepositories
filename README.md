@@ -12,8 +12,7 @@ meio do padrão estrutural MVVM.
 - [MVVM](  )
 - [API REST GitHub](https://docs.github.com/pt/rest)
 - [Retrofit GitHub](https://square.github.io/retrofit/)
-
-
+- [Glide](https://github.com/bumptech/glide)
 
 
 ## Conteúdo
@@ -39,7 +38,6 @@ meio do padrão estrutural MVVM.
 
 - Aula 09: Finalizando nosso app
 	- Glide
-	- Picasso
 
 
 ## Desafio

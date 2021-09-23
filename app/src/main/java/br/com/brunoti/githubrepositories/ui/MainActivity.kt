@@ -6,6 +6,7 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import br.com.brunoti.githubrepositories.R
+import br.com.brunoti.githubrepositories.core.createDialog
 import br.com.brunoti.githubrepositories.core.createProgressDialog
 import br.com.brunoti.githubrepositories.core.hideSoftKeyboard
 import br.com.brunoti.githubrepositories.databinding.ActivityMainBinding
@@ -14,6 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
+    private val dialog by lazy { createProgressDialog() }
     private val viewModel by viewModel<MainViewModel>()
     private val adapter by lazy { RepoListAdapter() }
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -30,9 +32,15 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         viewModel.repos.observe(this) {
             when (it) {
-                MainViewModel.State.Loading -> { }
-                is MainViewModel.State.Error -> { }
+                MainViewModel.State.Loading -> dialog.show()
+                is MainViewModel.State.Error -> {
+                    createDialog {
+                        setMessage(it.error.message)
+                    }.show()
+                    dialog.dismiss()
+                }
                 is MainViewModel.State.Success -> {
+                    dialog.dismiss()
                     adapter.submitList(it.list)
                 }
             }

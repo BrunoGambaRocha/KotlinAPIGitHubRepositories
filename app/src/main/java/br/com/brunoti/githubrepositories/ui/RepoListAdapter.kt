@@ -36,6 +36,7 @@ class RepoListAdapter : ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallba
                 .load(item.owner.avatarURL).into(binding.ivOwner)
         }
     }
+
 }
 
 class DiffCallback : DiffUtil.ItemCallback<Repo>() {
