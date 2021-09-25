@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GitHub Repositories</string>
     <string name="action_search">Pesquisar</string>
+    <string name="title_description">Descrição</string>
+    <string name="title_created_at">Criado em</string>
+    <string name="title_updated_at">Atualizado em</string>
+    <string name="title_owner">Proprietário</string>
+    <string name="title_language">Linguagem</string>
 </resources>

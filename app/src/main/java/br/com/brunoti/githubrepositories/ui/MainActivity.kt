@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val dialog by lazy { createProgressDialog() }
     private val viewModel by viewModel<MainViewModel>()
-    private val adapter by lazy { RepoListAdapter() }
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val adapter by lazy { RepoListAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        Log.e(TAG, "onQueryTextChange: $newText")   //atalho: loge
+        //Log.e(TAG, "onQueryTextChange: $newText")   //atalho: loge
         return false
     }
 

@@ -1,5 +1,7 @@
 package br.com.brunoti.githubrepositories.ui
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -10,7 +12,7 @@ import br.com.brunoti.githubrepositories.data.model.Repo
 import br.com.brunoti.githubrepositories.databinding.ItemRepoBinding
 import com.bumptech.glide.Glide
 
-class RepoListAdapter : ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallback()) {
+class RepoListAdapter(var mContext: Context) : ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,10 +29,22 @@ class RepoListAdapter : ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallba
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Repo) {
-            binding.tvRepoName.text = item.name
-            binding.tvRepoDescription.text = item.description
-            binding.tvRepoLanguage.text = item.language
-            binding.chipStar.text = item.stargazersCount.toString()
+            //Log.d("_itemExibido", "Element $adapterPosition show.")
+
+            binding.root.setOnClickListener {
+                //Log.d("_itemClick", "Element $adapterPosition clicked.")
+
+                val intent = Intent( mContext , DetailsActivity::class.java)
+                intent.putExtra("repository", this@RepoListAdapter.currentList[adapterPosition] )
+                binding.root.context.startActivity(intent)
+            }
+
+            with(binding) {
+                tvRepoName.text = item.name
+                tvRepoDescription.text = item.description
+                tvRepoLanguage.text = item.language
+                chipStar.text = item.stargazersCount.toString()
+            }
 
             Glide.with(binding.root.context)
                 .load(item.owner.avatarURL).into(binding.ivOwner)

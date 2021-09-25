@@ -31,7 +31,7 @@
             android:maxLines="1"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_owner"
+            app:layout_constraintStart_toEndOf="@+id/iv_owner"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@sample/repositories.json/data/name" />
 
@@ -43,8 +43,8 @@
             android:ellipsize="end"
             android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_repo_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_repo_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_repo_name"
             tools:text="@sample/repositories.json/data/description" />
 
         <com.google.android.material.chip.Chip
@@ -54,8 +54,8 @@
             app:chipBackgroundColor="@color/white"
             app:chipIcon="@drawable/ic_stars"
             app:chipIconTint="#FAFA02"
-            app:layout_constraintStart_toStartOf="@id/tv_repo_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_repo_description"
+            app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_repo_description"
             tools:text="@sample/repositories.json/data/stargazers_count" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -64,8 +64,9 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            app:layout_constraintEnd_toEndOf="@id/tv_repo_name"
-            app:layout_constraintTop_toTopOf="@id/chip_star"
+            android:layout_marginTop="@dimen/layout_half_padding"
+            app:layout_constraintEnd_toEndOf="@+id/tv_repo_name"
+            app:layout_constraintTop_toTopOf="@+id/chip_star"
             tools:text="@sample/repositories.json/data/language" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
